@@ -1,0 +1,46 @@
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <title>{{ course.name }}</title>
+
+    <!-- This is a stylesheet that includes the font you should use -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700" rel="stylesheet">
+
+    <!-- This is a 3rd-party stylesheet for Font Awesome: http://fontawesome.io/ -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" media="screen">
+
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+
+  </head>
+
+<body>
+  <header>
+      <!-- The <i> tag below includes the bullhorn icon from Font Awesome -->
+    <a href="/polls/"><h1 class="site-title"></i> {{ course.name }}</h1></a>
+
+    <nav class="navbar">
+      <ul class="navlist">
+        <li class="navitem navlink active"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Home</a></li>
+        <li class="navitem navlink"><a href="/polls/{{ course.name }}/Scatter">Scatter</a></li>
+        <li class="navitem navlink"><a href="/polls/{{ course.name }}/Agg_scatter">Agg_Scatter</a></li>
+        <li class="navitem navlink"><a href="/polls/{{ course.name }}/Median_with_0's">Median_with_0's</a></li>
+        <li class="navitem navlink"><a href="/polls/{{ course.name }}/Median_no_0's">Median_no_0's</a></li>
+        <li class="navitem navlink"><a href="/polls/{{ course.name }}/Aggregate">Aggregate</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="quest-container">
+    {% for student in course.students %}
+    <article class="quest">
+      <div class="quest-content">
+        <p class="student-attribute">
+          <a>{{ student.name }}</a>
+        </p>
+      </div>
+    </article>
+    {% endfor %}
+</body>

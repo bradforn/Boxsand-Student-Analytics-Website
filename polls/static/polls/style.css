@@ -1,0 +1,203 @@
+
+a {
+  text-decoration: none;
+  color:black;
+  font-family: "Roboto";
+}
+
+a:hover{
+  color:rgb(7, 149, 254);
+}
+
+body{
+  background-color: #f2f2f2;
+}
+
+p {
+  font-family: "roboto";
+}
+
+.site-title{
+  color:white;
+  background-color:rgb(7, 149, 254);
+  margin:0;
+  border: 0;
+  padding:10px ;
+  font-weight: 400;
+}
+
+.navbar{
+  background-color: white;
+  margin:0;
+  padding:0;
+}
+
+
+.navlist{
+  list-style-type: none;
+  margin-top: 0;
+  margin-bottom: 40px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.navitem.navlink.active{
+  text-decoration: none;
+  display: block;
+  float: left;
+  width: auto;
+  height: auto;
+  padding:10px;
+  text-align: center;
+  font-size: 30px;
+}
+
+.navitem.navlink.active:active{
+  border-bottom:3px solid rgb(7, 149, 254);
+}
+
+.navitem.navlink{
+  text-decoration: none;
+  display: block;
+  float: left;
+  width: auto;
+  padding:10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
+  font-size: 30px;
+}
+
+.navitem.navlink:active{
+  border-bottom:3px solid rgb(7, 149, 254);
+}
+
+.navitem.navbar-search{
+  float: right;
+  min-width: 10%;
+  max-width: 40%;
+  padding-top: 9px;
+  margin:0;
+}
+
+.quest-container {
+  display: flex;
+  width: 90%;
+  justify-content: left;
+  flex-wrap: wrap;
+  margin:auto;
+}
+
+.quest-content{
+  align-self: flex-start;
+  font-size: 25px;
+  width: 500px;
+  margin-right: 10px;
+}
+
+.quest-attribution{
+  margin-left:10px ;
+  font-weight: bold;
+  text-align: left;
+}
+
+.student-attribute{
+  margin-left:4px ;
+  font-weight: bold;
+  text-align: left;
+}
+
+.quest {
+  display: flex;
+  background-color: white;
+  flex:1;
+  min-width: 400px;
+  max-width: 30%;
+  border: 1px solid #d9d9d9;
+  margin: 3px;
+}
+
+#modal-backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+#create-twit-modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1010;
+  overflow: scroll;
+}
+
+.hidden {
+  display: none;
+}
+
+.modal-dialog {
+  width: auto;
+  max-width: 600px;
+  min-width: 350px;
+  min-height: 300px;
+  margin: 40px auto;
+  background-color: #fff;
+  border-radius: 15px;
+}
+
+.modal-header {
+  position: relative;
+  padding: 10px 20px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.modal-close-button {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  font-size: 24px;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.modal-footer button {
+  font-size: 20px;
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #333;
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.modal-footer .modal-cancel-button:hover {
+  background-color: #eee;
+}
+
+.modal-footer .modal-accept-button {
+  background-color: #319df6;
+  color: #fff;
+}
+
+.modal-footer .modal-accept-button:hover {
+  background-color: #087dde;
+}
+
+>>>>>>> origin/master

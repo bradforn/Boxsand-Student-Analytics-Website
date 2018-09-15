@@ -1,0 +1,165 @@
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <title>{{ course.name }}</title>
+
+    <!-- This is a stylesheet that includes the font you should use -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700" rel="stylesheet">
+
+    <!-- This is a 3rd-party stylesheet for Font Awesome: http://fontawesome.io/ -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" media="screen">
+
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+
+  </head>
+
+<body>
+  <header>
+      <!-- The <i> tag below includes the bullhorn icon from Font Awesome -->
+    <a href="/polls/"><h1 class="site-title"></i> {{ course.name }}</h1></a>
+
+    <nav class="navbar">
+      <ul class="navlist">
+        <li class="navitem navlink active"><a href="/polls/{{ course.name }}/">Home</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="quest-container">
+    {% for activity in course.activities %}
+    <article class="quest">
+      <div class="quest-content">
+        <p class="student-attribute">
+          <a href="/polls/{{ course.name }}/Scatter/{{ activity }}/">{{ activity }}</a>
+        </p>
+      </div>
+    </article>
+    {% endfor %}
+  </main>
+</body>
+
+<button type="button" id="create-twit-button">New Plot</button>
+  <div id="modal-backdrop" class="hidden"></div>
+    <div id="create-twit-modal" class="hidden">
+      <div class="modal-dialog">
+
+        <div class="modal-header">
+          <h3>Create new plot</h3>
+          <button type="button" class="modal-close-button">&times;</button>
+        </div>
+
+        <div class="modal-body">
+          <div class="twit-input-element">
+            <label for="twit-text-input">Plot name</label>
+            <textarea id="twit-text-input"></textarea>
+          </div>
+          <div class="twit-input-element">
+            <label for="twit-attribution-input">Search parameter</label>
+            <input type="text" id="twit-attribution-input">
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="modal-cancel-button">Cancel</button>
+          <button type="button" class="modal-accept-button">Create plot</button>
+        </div>
+
+      </div>
+    </div>
+
+<button type="button" id="delete-twit-button">Delete Plot</button>
+  <div id="modal-backdrop1" class="hidden"></div>
+    <div id="delete-twit-modal" class="hidden">
+      <div class="modal-dialog">
+
+        <div class="modal-header">
+          <h3>Delete plot</h3>
+          <button type="button" class="modal-close-button">&times;</button>
+        </div>
+
+        <div class="modal-body1">
+          <div class="twit-input-element1">
+            <label for="twit-text-input1">Plot name</label>
+            <textarea id="twit-text-input1"></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="modal1-cancel-button">Cancel</button>
+          <button type="button" class="modal1-accept-button">Delete plot</button>
+        </div>
+
+      </div>
+    </div>
+
+
+<script>
+  var twitary = document.getElementsByClassName("twit")
+  var searchbutton = document.getElementById("navbar-search-button")
+  var searchbar = document.getElementById("navbar-search-input")
+  var hidden = document.getElementsByClassName('hidden')
+  var twitbutton = document.getElementById('create-twit-button')
+  var deltwitbutton = document.getElementById('delete-twit-button')
+  var createmodal = document.getElementById('create-twit-modal')
+  var deletemodal = document.getElementById('delete-twit-modal')
+  var twittext = document.getElementById("twit-text-input")
+  var twittext1 = document.getElementById("twit-text-input1")
+  var author = document.getElementById("twit-attribution-input")
+  // unhides twit modal
+  function modal (event) {
+       hidden[0].style.display = "initial";
+       hidden[1].style.display = "initial";
+  }
+
+  function modal1 (event) {
+       hidden[2].style.display = "initial";
+       hidden[3].style.display = "initial";
+  }
+
+  function createplot(plot, search_by){
+    window.location.href = "/polls/{{ course.name }}/Scatter/" + plot +"/" + search_by + "/"
+  }
+  function deleteplot(plot){
+    window.location.href = "/polls/{{ course.name }}/Scatter/delete/" + plot + "/"
+  }
+
+  function canceltwit (event){
+    var currElem = event.target;
+    if(currElem.getAttribute('class') === 'modal-cancel-button' || currElem.getAttribute('class') === "modal-close-button"){
+      hidden[0].style.display = "none";
+      hidden[1].style.display = "none";
+      twittext.value = '';
+      author.value = '';
+    }
+    if(currElem.getAttribute('class') === 'modal-accept-button'){
+      if (twittext.value === '' || author.value === '') {
+        alert("Please make sure the plot name and search parameters have been entered");
+      }
+      createplot(twittext.value, author.value);
+    }
+  }
+  function canceltwit1 (event){
+    var currElem = event.target;
+    if(currElem.getAttribute('class') === 'modal1-cancel-button' || currElem.getAttribute('class') === "modal-close-button"){
+      hidden[2].style.display = "none";
+      hidden[3].style.display = "none";
+      twittext.value = '';
+      author.value = '';
+    }
+    if(currElem.getAttribute('class') === 'modal1-accept-button'){
+      if (twittext.value === '') {
+        alert("Please make sure the plot name has been entered");
+      }
+      deleteplot(twittext1.value);
+    }
+  }
+
+  twitbutton.addEventListener('click', modal);
+  deltwitbutton.addEventListener('click', modal1);
+  createmodal.addEventListener('click',canceltwit);
+  deletemodal.addEventListener('click',canceltwit1);
+  searchbutton.addEventListener('click', searchs);
+</script>
