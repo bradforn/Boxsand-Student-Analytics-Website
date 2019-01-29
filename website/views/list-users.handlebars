@@ -1,0 +1,60 @@
+<html>
+  <body>
+    <?php
+                                                </tr>';
+                                 $rows = mysqli_num_rows($result);
+                                 if($rows > 0)
+                                 {
+                                          if($rows > 10)
+                                          {
+                                                  $delete_records = $rows - 10;
+                                                  $delete_sql = "DELETE FROM Users LIMIT $delete_records";
+                                                  mysqli_query($conn, $delete_sql);
+                                          }
+                                      while($row = mysqli_fetch_array($result))
+                                      {
+                                           $output .= '
+                                                <tr>
+                                                     <td class="last_name" style="text-align: center" data-id1="'.$row["username"].'" contenteditable>'.$row["username"].'</td>
+                                                     <td class="last_name" style="text-align: center" data-id2="'.$row["username"].'" contenteditable>'.$row["firstName"].'</td>
+                                                     <td class="last_name" style="text-align: center" data-id2="'.$row["username"].'" contenteditable>'.$row["lastName"].'</td>
+                                                     <td class="last_name" style="text-align: center" data-id2="'.$row["username"].'" contenteditable>'.$row["email"].'</td>
+                                                     <td class="last_name" style="text-align: center" data-id2="'.$row["username"].'" contenteditable>'.$row["age"].'</td>
+                                                                ';
+                                                           }
+                                                           $output .= '
+                                                                <tr>
+                                                                  <td id="username" contenteditable></td>
+                                                                  <td id="firstName" contenteditable></td>
+                                                                  <td id="lastName" contenteditable></td>
+                                                                  <td id="email" contenteditable></td>
+                                                                  <td id="age" contenteditable></td>
+                                                                </tr>
+                                                                ';
+                                                                }
+                                                                else
+                                                                {
+                                                                  $output .= '
+                                                                  <tr>
+                                                                    <td id="username" contenteditable></td>
+                                                                    <td id="firstName" contenteditable></td>
+                                                                    <td id="lastName" contenteditable></td>
+                                                                    <td id="email" contenteditable></td>
+                                                                    <td id="age" contenteditable></td>
+                                                                  </tr>
+                                                                  ';
+                                                                }
+                                                                $output .= '</table>
+                                                                </div>';
+                                                                echo $output;
+
+?>
+
+
+
+            </table>
+          </div>
+        </div>
+      </div>
+    </body>
+  </html>
